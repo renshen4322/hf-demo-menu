@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hf.menu.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.hf.menu.model.CategoryEntity">
+    <id column="cat_id" jdbcType="BIGINT" property="catId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parent_cid" jdbcType="BIGINT" property="parentCid" />
+    <result column="cat_level" jdbcType="INTEGER" property="catLevel" />
+    <result column="show_status" jdbcType="TINYINT" property="showStatus" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cat_id, `name`, parent_cid, cat_level, show_status, sort, url, icon
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    where cat_id = #{catId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from category
+    where cat_id = #{catId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="cat_id" keyProperty="catId" parameterType="com.hf.menu.model.CategoryEntity" useGeneratedKeys="true">
+    insert into category (`name`, parent_cid, cat_level, 
+      show_status, sort, url, 
+      icon)
+    values (#{name,jdbcType=VARCHAR}, #{parentCid,jdbcType=BIGINT}, #{catLevel,jdbcType=INTEGER}, 
+      #{showStatus,jdbcType=TINYINT}, #{sort,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="cat_id" keyProperty="catId" parameterType="com.hf.menu.model.CategoryEntity" useGeneratedKeys="true">
+    insert into category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="parentCid != null">
+        parent_cid,
+      </if>
+      <if test="catLevel != null">
+        cat_level,
+      </if>
+      <if test="showStatus != null">
+        show_status,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCid != null">
+        #{parentCid,jdbcType=BIGINT},
+      </if>
+      <if test="catLevel != null">
+        #{catLevel,jdbcType=INTEGER},
+      </if>
+      <if test="showStatus != null">
+        #{showStatus,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hf.menu.model.CategoryEntity">
+    update category
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCid != null">
+        parent_cid = #{parentCid,jdbcType=BIGINT},
+      </if>
+      <if test="catLevel != null">
+        cat_level = #{catLevel,jdbcType=INTEGER},
+      </if>
+      <if test="showStatus != null">
+        show_status = #{showStatus,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cat_id = #{catId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hf.menu.model.CategoryEntity">
+    update category
+    set `name` = #{name,jdbcType=VARCHAR},
+      parent_cid = #{parentCid,jdbcType=BIGINT},
+      cat_level = #{catLevel,jdbcType=INTEGER},
+      show_status = #{showStatus,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR}
+    where cat_id = #{catId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectCategoryAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from category
+  </select>
+
+</mapper>
