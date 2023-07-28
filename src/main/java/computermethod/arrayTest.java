@@ -34,7 +34,7 @@ public class arrayTest {
                 "Max profit is: " + maxProfit);
         extracted();
 
-
+        getResult(10);
     }
     /**
      * 数组中二二组合 为一个指定的数
