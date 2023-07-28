@@ -31,7 +31,6 @@ public class VersionUtil {
             vs[1] = String.valueOf(Integer.valueOf(vs[1])+counts.get());
             vs[2] = "0";
         }
-
         if(Integer.parseInt(vs[1]) > 9){
             counts.getAndIncrement();
             vs[0] = String.valueOf(Integer.valueOf(vs[0])+1);
@@ -61,7 +60,6 @@ public class VersionUtil {
             vs[1] = String.valueOf(Integer.valueOf(vs[1])+counts.get());
             vs[2] = "0";
         }
-
         if(Integer.parseInt(vs[1]) > 9){
             counts.getAndIncrement();
             vs[0] = String.valueOf(Integer.valueOf(vs[0])+1);
@@ -70,7 +68,6 @@ public class VersionUtil {
         String result = String.join(".", vs[0], vs[1], vs[2]);
         return result;
     }
-
 
 
     public static void main(String[] args) {

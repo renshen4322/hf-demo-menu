@@ -36,6 +36,25 @@ public class arrayTest {
 
 
     }
+    /**
+     * 数组中二二组合 为一个指定的数
+     * @param result
+     */
+    public static void getResult(int result) {
+        int[] arr = new int[]{0, 2, 3, 1, 4, 10, 23, 7, 8, 9, 6, 3};
+        for (int i = 0; i < arr.length; i++) {
+            int startItem = arr[i];
+            for (int j = 0; j < arr.length; j++) {
+                if (i == j)
+                    continue;
+                int endItem = arr[j];
+                if ((startItem + endItem) == result)
+                    System.out.println(startItem + "+" + endItem + "=" + result);
+
+            }
+
+        }
+    }
 
     private static void extracted() {
         int[] ints = {9, 4, 9, 2, 1, 9, 9, 9};
