@@ -1,15 +1,12 @@
 package computermethod;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class arrayTest {
 
     public static void main(String[] args) {
-        //getSumGroupResult(10);
+        getSumGroupResult(10);
         // caml20();
         // numBaoTa();
         // camlBall8();
@@ -26,15 +23,33 @@ public class arrayTest {
         // reverseArray(arr);
        // System.out.println(foo(30));
 
-        int[] nums = {
-                4, 5, 6, 9, 26, 39, 1,
-                18, 24, 21, 19, 33};
-        int maxProfit = solution(nums);
-        System.out.println(
-                "Max profit is: " + maxProfit);
-        extracted();
+//        int[] nums = {
+//                4, 5, 6, 9, 26, 39, 1,
+//                18, 24, 21, 19, 33};
+//        int maxProfit = solution(nums);
+//        System.out.println(
+//                "Max profit is: " + maxProfit);
+//        extracted();
 
-        getResult(10);
+        //getResult(10);
+    }
+
+    /**
+     *当需要向List中添加大量数据时，我们可以将数据分批添加到List中。
+     * 假设我们需要添加1000000个元素，我们可以将它们分成10个批次，
+     * 每个批次添加100000个元素。这样可以避免List在添加元素时频繁扩容，
+     * 减少内存的浪费。
+     */
+    public static void getAddList(){
+        List<String> list = new ArrayList<>(1000000);
+        for (int i = 0; i < 10; i++) {
+            List<String> subList = new ArrayList<>(100000);
+            for (int j = 0; j < 100000; j++) {
+                subList.add("element" + j);
+            }
+            list.addAll(subList);
+        }
+
     }
     /**
      * 数组中二二组合 为一个指定的数
@@ -370,6 +385,7 @@ public class arrayTest {
      */
     public static void getSumGroupResult(int result) {
         int[] arr = new int[]{3, 4, 7};
+        Set<Integer> setStr = new HashSet<Integer>();;
         for (int i = 0; i < arr.length; i++) {
             int startItem = arr[i];
             for (int j = 0; j < arr.length; j++) {
@@ -377,12 +393,20 @@ public class arrayTest {
                     continue;
                 int endItem = arr[j];
                 if ((startItem + endItem) == result) {
-                    System.out.println(startItem + "+" + endItem + "=" + result);
+                  //  System.out.println(startItem + "+" + endItem + "=" + result);
                     int index1 = Arrays.binarySearch(arr, startItem);
-                    System.out.println("startItem 数组中的位置：" + index1);
+                  //  System.out.println("startItem 数组中的位置：" + index1);
                     int index2 = Arrays.binarySearch(arr, endItem);
-                    System.out.println("endItem 数组中的位置：" + index2);
+                   // System.out.println("endItem 数组中的位置：" + index2);
+                    setStr.add(index1);
+                    setStr.add(index2);
                 }
+            }
+        }
+
+        if(setStr.size()>0){
+            for (Integer s:setStr) {
+                System.out.println("组合在数组中的下标: "+s);
             }
         }
     }
