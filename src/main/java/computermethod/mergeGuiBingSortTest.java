@@ -3,7 +3,7 @@ package computermethod;
 import java.util.ArrayList;
 import java.util.List;
 
-public class mergeSortTest {
+public class mergeGuiBingSortTest {
     public static void main(String[] args) {
         int[] a = {2,5,7,8};
         int[] b = {4,6,66,77,89};

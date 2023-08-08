@@ -1,6 +1,6 @@
 package computermethod;
 
-public class TestOne {
+public class TestChaRMergerOne {
     public static void main(String[] args) {
        // 直接插入排序();
         // 两个待合并数组
